@@ -1,0 +1,12 @@
+{
+    "name": "alenm/pogurajme",
+    "description": "IBU cen236 web programming Project",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "virtualsufi",
+            "email": "68276851+virtualsufi@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
