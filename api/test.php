@@ -11,10 +11,10 @@ $user_dao = new UserDao();
 //$user = $user_dao->get_user_by_id(15);
 $user1 = [
   "name" => "Denis Redzepagic",
-  "email" => "denis.redzepagic@gmail.com",
-  "password" => "123456",
-  "account_id" => 1
+  "email" => "denisoglu.redzepagic@gmail.com",
+  "password" => "12",
 ];
+
 $user = $user_dao->update_user(24, $user1);
 
 print_r($user);
