@@ -9,13 +9,13 @@ require_once dirname(__FILE__). "/dao/AccountDao.class.php";
 $dao = new AccountDao();
 
 /*$account1 = [
-  "name" => "Green Hosting",
+  "name" => "Logosoft",
   "created_at" => date("Y-m-d H-i-s")
 ];
 
-$account = $dao->add_account($account1);*/
-$dao->update_account(13, ["name" => "GREEN HOSTING"]);
-$accounts = $dao->get_all_accounts();
+$account = $dao->add($account1);*/
+$dao->update(19, ["name" => "LOGOSOFT"]);
+$accounts = $dao->get_all();
 
 print_r($accounts);
 
