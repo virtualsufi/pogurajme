@@ -6,10 +6,6 @@ class CustomerDao extends BaseDao{
   public function __construct(){
     parent::__construct("customers");
   }
-
-  public function get_all_customers(){
-    return $this->query("SELECT * FROM customers", []);
-  }
 }
 
  ?>
