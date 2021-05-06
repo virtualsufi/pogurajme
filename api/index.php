@@ -7,26 +7,28 @@ require dirname(__FILE__).'/../vendor/autoload.php';
 require_once dirname(__FILE__). "/dao/BaseDao.class.php";
 require_once dirname(__FILE__). "/dao/AccountDao.class.php";
 
+Flight::register('accountDao', 'AccountDao');
+
 Flight::route('GET /accounts', function(){
-  $dao = new AccountDao();
-  $accounts = $dao->get_all();
-  Flight::json($accounts);
+  Flight::json(Flight::accountDao()->get_all());
 });
 
 Flight::route('GET /accounts/@id', function($id){
-  $dao = new AccountDao();
-  $accounts = $dao->get_by_id($id);
-  Flight::json($accounts);
+  Flight::json($account);
 });
 
 Flight::route('POST /accounts', function(){
   $request = Flight::request();
   $data = $request->data->getData();
-  $dao = new AccountDao();
-  $account = $dao->add($data);
-  Flight::json($account);
+  Flight::json(Flight::accountDao()->add($data));
 });
 
+Flight::route('PUT /accounts/@id', function($id){
+  $request = Flight::request();
+  $data = $request->data->getData();
+  Flight::accountDao()->update($id, $data);
+  Flight::json(Flight::accountDao()->get_by_id($id));
+});
 
 Flight::start();
 
