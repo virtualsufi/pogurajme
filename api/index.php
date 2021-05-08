@@ -6,6 +6,7 @@ error_reporting(E_ALL);
 require_once dirname(__FILE__).'/../vendor/autoload.php';
 require_once dirname(__FILE__). "/dao/BaseDao.class.php";
 require_once dirname(__FILE__). "/dao/AccountDao.class.php";
+require_once dirname(__FILE__). "/services/AccountService.class.php";
 
 /* Utility function for reading query parameters from URL */
 Flight::map('query', function($name, $default_value = NULL){
@@ -16,7 +17,10 @@ Flight::map('query', function($name, $default_value = NULL){
 });
 
 /* Register DAO layer */
-Flight::register('accountDao', 'AccountDao');
+//Flight::register('accountDao', 'AccountDao');
+
+/* Register Business Logic layer services */
+Flight::register('accountService', 'AccountService');
 
 /*Include all routes */
 require_once dirname(__FILE__)."/routes/accounts.php";
