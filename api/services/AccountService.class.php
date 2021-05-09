@@ -13,7 +13,7 @@ class AccountService extends BaseService {
     if ($search){
       return ($this->dao->get_accounts($search, $offset, $limit, $order));
     }else{
-      return ($this->dao->get_all($offset, $limit));
+      return ($this->dao->get_all($offset, $limit, $order));
     }
   }
 
