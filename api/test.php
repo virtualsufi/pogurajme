@@ -7,12 +7,17 @@ error_reporting(E_ALL);
 require_once dirname(__FILE__). "/dao/UserDao.class.php";
 require_once dirname(__FILE__). "/dao/AccountDao.class.php";
 require_once dirname(__FILE__). "/dao/CampaignDao.class.php";
+require_once dirname(__FILE__).'/../vendor/autoload.php';
 
-$dao = new AccountDao();
+$openapi = \OpenApi\scan(dirname(__FILE__)."/routes");
+header('Content-Type: application/json');
+echo $openapi->toJson();
+
+/*$dao = new AccountDao();
 
 $accounts = $dao->get_all();
 echo json_encode($accounts, JSON_PRETTY_PRINT);
-
+*/
 /*for ($i = 0; $i < 1; $i++){
   $dao->add([
     "name" => base64_encode(random_bytes(10)),

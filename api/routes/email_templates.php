@@ -1,4 +1,13 @@
 <?php
+/* Swagger documentation */
+/**
+ * @OA\Info(title="Poguraj me API", version="0.2")
+ * @OA\OpenApi(
+ *    @OA\Server(url="http://localhost/pogurajme/api/", description="Development Environment" ),
+ *    @OA\Server(url="https://pogurajme/api/", description="Production Environment" )
+ * ),
+ * @OA\SecurityScheme(securityScheme="ApiKeyAuth", type="apiKey", in="header", name="Authentication" )
+ */
 /**
  * @OA\Get(path="/user/email_templates", tags={"x-user", "email-templates"}, security={{"ApiKeyAuth": {}}},
  *     @OA\Parameter(type="integer", in="query", name="offset", default=0, description="Offset for pagination"),
@@ -67,12 +76,12 @@
  *     @OA\Response(response="200", description="Update email template")
  * )
  */
-Flight::route('PUT /email_templates/@id', function($id){
+/*Flight::route('PUT /email_templates/@id', function($id){
   Flight::json(Flight::emailTemplateService()->update_email_template(Flight::get('user'), $id, Flight::request()->data->getData()));
-});
+});*/
 
 /**
- * @OA\Get(path="/admin/email_templates", tags={"x-admin", "email-templates"}, security={{"ApiKeyAuth": {}}},
+ * @OA\Get(path="/email_templates", tags={"x-admin", "email-templates"}, security={{"ApiKeyAuth": {}}},
  *     @OA\Parameter(type="integer", in="query", name="account_id", default=0, description="Account ID"),
  *     @OA\Parameter(type="integer", in="query", name="offset", default=0, description="Offset for pagination"),
  *     @OA\Parameter(type="integer", in="query", name="limit", default=25, description="Limit for pagination"),

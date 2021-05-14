@@ -12,9 +12,9 @@ require_once dirname(__FILE__).'/services/CampaignService.class.php';
 Flight::set('flight.log_errors', TRUE);
 
 /* error handling for our API */
-/*Flight::map('error', function(Exception $ex){
+Flight::map('error', function(Exception $ex){
   Flight::json(["message" => $ex->getMessage()], $ex->getCode() ? $ex->getCode() : 500);
-});*/
+});
 
 /* utility function for reading query parameters from URL */
 Flight::map('query', function($name, $default_value = NULL){
@@ -42,6 +42,7 @@ Flight::route('GET /swagger', function(){
   echo $openapi->toJson();
 });
 
+/* Redirect to Swagger documentation */
 Flight::route('GET /', function(){
   Flight::redirect('/docs');
 });
