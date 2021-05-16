@@ -16,7 +16,8 @@
  */
 Flight::route('POST /register', function(){
   $data = Flight::request()->data->getData();
-  Flight::json(Flight::userService()->register($data));
+  Flight::userService()->register($data);
+  Flight::json(["message" => "Confirmation email has been sent. Please confirm your account"]);
 });
 
 /**
@@ -27,7 +28,7 @@ Flight::route('POST /register', function(){
  */
 Flight::route('GET /confirm/@token', function($token){
   Flight::userService()->confirm($token);
-  Flight::json(["Message" => "Your account has been activated"]);
+  Flight::json(["message" => "Your account has been activated"]);
 });
 
 /**
@@ -44,7 +45,8 @@ Flight::route('GET /confirm/@token', function($token){
  * )
  */
 Flight::route('POST /login', function(){
-  Flight::json(Flight::jwt(Flight::userService()->login(Flight::request()->data->getData())));
+  $data = Flight::request()->data->getData();
+  Flight::json(Flight::userService()->login($data));
 });
 
 /**
