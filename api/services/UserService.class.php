@@ -2,8 +2,7 @@
 require_once dirname(__FILE__). '/BaseService.class.php';
 require_once dirname(__FILE__).'/../dao/UserDao.class.php';
 require_once dirname(__FILE__).'/../dao/AccountDao.class.php';
-
-//require_once dirname(__FILE__).'/../clients/SMTPClient.class.php';
+require_once dirname(__FILE__).'/../clients/SMTPClient.class.php';
 
 class UserService extends BaseService{
 
@@ -14,7 +13,7 @@ class UserService extends BaseService{
   public function __construct(){
     $this->dao = new UserDao();
     $this->accountDao = new AccountDao();
-    //$this->smtpClient = new SMTPClient();
+    $this->smtpClient = new SMTPClient();
   }
 
   public function reset($user){
@@ -40,7 +39,7 @@ class UserService extends BaseService{
     $db_user = $this->update($db_user['id'], ['token' => md5(random_bytes(16)), 'token_created_at' => date(Config::DATE_FORMAT)]);
 
     // send email
-    //$this->smtpClient->send_user_recovery_token($db_user);
+    $this->smtpClient->send_user_recovery_token($db_user);
   }
 
   public function login($user){
@@ -89,7 +88,7 @@ class UserService extends BaseService{
       }
     }
 
-    //  $this->smtpClient->send_register_user_token($user);
+    $this->smtpClient->send_register_user_token($user);
 
     return $user;
   }
