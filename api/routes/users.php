@@ -44,10 +44,9 @@ Flight::route('GET /confirm/@token', function($token){
  *  @OA\Response(response="200", description="Message that user has been created.")
  * )
  */
-Flight::route('POST /login', function(){
-  $data = Flight::request()->data->getData();
-  Flight::json(Flight::userService()->login($data));
-});
+ Flight::route('POST /login', function(){
+   Flight::json(Flight::jwt(Flight::userService()->login(Flight::request()->data->getData())));
+ });
 
 /**
  * @OA\Post(path="/forgot", tags={"login"}, description="Send recovery URL to users email address",
