@@ -1,4 +1,14 @@
 <?php
+/* Swagger documentation */
+/**
+ * @OA\Info(title="Poguraj me API", version="0.2")
+ * @OA\OpenApi(
+ *    @OA\Server(url="http://localhost/pogurajme/api/", description="Development Environment" ),
+ *    @OA\Server(url="https://poguraj.me/api/", description="Production Environment" )
+ * ),
+ * @OA\SecurityScheme(securityScheme="ApiKeyAuth", type="apiKey", in="header", name="Authentication" )
+ */
+
 /**
  * @OA\Post(path="/register", tags={"login"},
  *   @OA\RequestBody(description="Basic user info", required=true,
